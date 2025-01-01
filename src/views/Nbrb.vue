@@ -228,8 +228,7 @@ export default {
     },
 
     getCurrenciesByParentId(parentId) {
-      const rawCurrencies = getVueObject(this.currencies)
-      return rawCurrencies.filter(c => c.Cur_ParentID === parentId)
+      return this.currencies.filter(c => c.Cur_ParentID === parentId)
     },
 
     getRequests(currencies, start, end, isOnce) {

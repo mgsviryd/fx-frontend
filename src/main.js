@@ -50,8 +50,12 @@ router.beforeEach(async (to, from, next) => {
     }
 })
 
-window.getVueObject = obj => {
-    return JSON.parse(JSON.stringify(obj))
+// clear console after reload
+if (import.meta.hot) {
+    import.meta.hot.on(
+        "vite:beforeUpdate",
+        () => console.clear() // comment to disable
+    );
 }
 
 const app = createApp(App)
