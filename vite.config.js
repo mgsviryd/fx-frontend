@@ -30,5 +30,5 @@ export default defineConfig({
         // overwrite default .html entry
         input: '/src/main.js',
     },
-    base: '/fx-frontend',
+    base: '/fx.frontend',
 })
