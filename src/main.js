@@ -1,4 +1,4 @@
-import { createApp } from 'vue'
+import {createApp} from 'vue'
 import './style.css'
 import App from './App.vue'
 
@@ -10,4 +10,5 @@ if (import.meta.hot) {
     )
 }
 
-createApp(App).mount('#app')
+const app = createApp(App)
+app.mount('#app')
