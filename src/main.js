@@ -3,6 +3,8 @@ import './style.css'
 import App from './App.vue'
 
 import $ from 'jquery'
+import 'bootstrap/dist/css/bootstrap.css'
+
 
 window.jQuery = window.$ = $
 
@@ -15,4 +17,5 @@ if (import.meta.hot) {
 }
 
 const app = createApp(App)
-app.mount('#app')
+app.use(createBootstrap())
+    .mount('#app')
