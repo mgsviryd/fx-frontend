@@ -73,6 +73,7 @@ export default {
   watch: {
     $route: {
       handler(to, from) {
+        this.setTitle(to)
       },
       immediate: true,
     },
@@ -88,6 +89,9 @@ export default {
     },
     incrementCount() {
       this.$store.commit('increment')
+    },
+    setTitle(to) {
+      document.title = (to.meta.title)
     },
   }
 }

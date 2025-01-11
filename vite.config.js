@@ -24,4 +24,6 @@ export default defineConfig({
             },
         }
     },
+    base: '/',
+    // base: '/fx-frontend',
 })
