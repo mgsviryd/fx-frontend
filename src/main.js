@@ -6,6 +6,7 @@ import $ from 'jquery'
 import {createBootstrap} from 'bootstrap-vue-next'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue-next/dist/bootstrap-vue-next.css'
+import store from './store/store.js'
 
 
 window.jQuery = window.$ = $
@@ -20,4 +21,5 @@ if (import.meta.hot) {
 
 const app = createApp(App)
 app.use(createBootstrap())
+    .use(store)
     .mount('#app')

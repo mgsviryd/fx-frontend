@@ -5,10 +5,8 @@
 </template>
 
 <script>
-
 export default {
-  props: [],
-  components: {},
+  props: {},
   async created() {
     await this.fetchData()
   },
