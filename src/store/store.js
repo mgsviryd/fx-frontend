@@ -3,6 +3,7 @@ import VuexPersistence from 'vuex-persist'
 import localforage from 'localforage'
 import {setLangAndLoadMessagesIfAbsent} from '../i18n/i18n.js'
 import helloWorld from '../rest/hello-world.js'
+import createMutationsSharer from 'vuex-shared-mutations'
 
 const persist = new VuexPersistence(
     {
@@ -22,6 +23,12 @@ const persist = new VuexPersistence(
 const store = createStore({
     plugins: [
         persist.plugin, // can be timing problem with loading page
+        createMutationsSharer({
+            predicate: (mutation, state) => {
+                const predicate = ["increment",] // mutations for sync
+                return predicate.indexOf(mutation.type) >= 0
+            }
+        })
     ],
     state() {
         return {
