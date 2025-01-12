@@ -7,8 +7,8 @@ import {createBootstrap} from 'bootstrap-vue-next'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue-next/dist/bootstrap-vue-next.css'
 import store from './store/store.js'
-import router from "./router/router.js"
-
+import router from './router/router.js'
+import {i18n} from './i18n/i18n.js'
 
 window.jQuery = window.$ = $
 
@@ -37,4 +37,5 @@ const app = createApp(App)
 app.use(createBootstrap())
     .use(store)
     .use(router)
+    .use(i18n)
     .mount('#app')

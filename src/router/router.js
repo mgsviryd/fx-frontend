@@ -2,7 +2,7 @@ import {createRouter, createWebHistory} from 'vue-router'
 import HelloWorld from '../view/HelloWorld.vue'
 
 const routes = [
-    {path: '/', name: 'main', component: HelloWorld, meta: {title: 'Hello world title', requiresAuth: false,}},
+    {path: '/', name: 'main', component: HelloWorld, meta: {title: 'mainTitle', requiresAuth: false,}},
 ]
 
 const router = createRouter({

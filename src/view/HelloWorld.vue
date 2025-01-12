@@ -4,6 +4,15 @@
       class="d-flex align-items-center min-vh-100"
   >
     <div class="container">
+      <BDropdown :text="lang">
+        <BDropdownItem
+            v-for="(locale,i) in supportedLocales"
+            @click="selectLang(locale)"
+        >
+          {{ locale }}
+        </BDropdownItem>
+      </BDropdown>
+
       <div>
         <a href="https://vite.dev" target="_blank">
           <img alt="Vite logo" class="logo" src="/vite.svg"/>
@@ -13,8 +22,7 @@
         </a>
       </div>
 
-      <BRow>{{'Hello world'}}</BRow>
-      <h1>{{ msg}}</h1>
+      <BRow>{{ getLang('helloWorld') }}</BRow>
 
       <div class="card">
         <BButton variant="outline-primary" @click="incrementCount">count is {{ count }}</BButton>
@@ -45,20 +53,19 @@
 
 <script>
 import {mapGetters, mapState} from "vuex"
+import {SUPPORT_LOCALES} from '../i18n/i18n.js'
 
 export default {
-  props: {
-    msg:String,
-  },
-  components: {
-  },
+  props: {},
+  components: {},
   async mounted() {
     await this.fetchData()
   },
 
   computed: {
     ...mapState([
-        "count",
+      "lang",
+      "count",
     ]),
     ...mapGetters([]),
     prefix() {
@@ -68,6 +75,9 @@ export default {
       return {
         id: this.prefix,
       }
+    },
+    supportedLocales() {
+      return SUPPORT_LOCALES
     },
   },
   watch: {
@@ -91,7 +101,13 @@ export default {
       this.$store.commit('increment')
     },
     setTitle(to) {
-      document.title = (to.meta.title)
+      document.title = this.getLang(to.meta.title) || this.getLang('defaultTitle')
+    },
+    getLang(key) {
+      return this.$t(key)
+    },
+    selectLang(lang) {
+      this.$store.dispatch('setI18nLang', {lang: lang})
     },
   }
 }

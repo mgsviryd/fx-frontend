@@ -1,18 +1,22 @@
 <template>
-  <router-view></router-view>
+  <router-view v-if="show.router"></router-view>
 </template>
 
 <script>
 
 import {mapGetters, mapState} from "vuex"
-import store from "./store/store.js"
 
 export default {
   props: [],
   components: {},
   async mounted() {
     await this.fetchData()
-    await store.restored
+  },
+  async created() {
+    this.show.router = false // not load vue view before below
+    await this.$store.restored // restore all data before load vue view
+    await this.$store.dispatch('loadI18nLang')
+    this.show.router = true
   },
 
   computed: {
@@ -33,6 +37,9 @@ export default {
   data() {
     return {
       name: 'App',
+      show: {
+        router: false,
+      },
     }
   },
   methods: {

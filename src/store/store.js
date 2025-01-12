@@ -1,6 +1,7 @@
 import {createStore} from 'vuex'
 import VuexPersistence from 'vuex-persist'
 import localforage from 'localforage'
+import {setLangAndLoadMessagesIfAbsent} from '../i18n/i18n.js'
 
 const persist = new VuexPersistence(
     {
@@ -31,17 +32,29 @@ const store = createStore({
             ],
         }
     },
-    mutations: {
-        increment(state) {
-            state.count++
-        },
-    },
     getters: {
         getTodoById: (state) => (id) => {
             return state.todos.find(todo => todo.id === id)
         },
-        isUserAbsent: (state)=>{
+        isUserAbsent: (state) => {
             return !state.user
+        },
+    },
+    mutations: {
+        increment(state) {
+            state.count++
+        },
+        setLang(state, {lang}) {
+            state.lang = lang
+        }
+    },
+    actions: {
+        async loadI18nLang({commit, state}) {
+            await setLangAndLoadMessagesIfAbsent(state.lang)
+        },
+        async setI18nLang({commit}, {lang}) {
+            await setLangAndLoadMessagesIfAbsent(lang)
+            commit('setLang', {lang: lang})
         },
     },
 })
