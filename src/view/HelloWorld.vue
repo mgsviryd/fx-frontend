@@ -52,7 +52,7 @@
 </template>
 
 <script>
-import {mapGetters, mapState} from "vuex"
+import {mapGetters, mapState} from 'vuex'
 import {SUPPORT_LOCALES} from '../i18n/i18n.js'
 
 export default {
