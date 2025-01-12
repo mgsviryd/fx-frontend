@@ -11,11 +11,19 @@ import router from './router/router.js'
 import {i18n} from './i18n/i18n.js'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
+
 import {library} from '@fortawesome/fontawesome-svg-core'
 import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome'
 import {faPenToSquare} from '@fortawesome/free-solid-svg-icons'
 import {faAngry} from '@fortawesome/free-regular-svg-icons'
 import {faVk} from '@fortawesome/free-brands-svg-icons'
+
+import HighchartsVue from 'highcharts-vue'
+import Highcharts from "highcharts"
+import stockInit from "highcharts/modules/stock"
+import accessibilityInit from "highcharts/modules/accessibility"
+import indicatorsInit from 'highcharts/indicators/indicators'
+
 
 window.jQuery = window.$ = $
 
@@ -44,6 +52,16 @@ axios.defaults.baseURL = location.protocol + '//' + location.hostname + ':' + 80
 
 library.add(faPenToSquare, faAngry, faVk)
 
+if (typeof stockInit === 'function') {
+    stockInit(Highcharts)
+}
+if (typeof accessibilityInit === 'function') {
+    accessibilityInit(Highcharts)
+}
+if (typeof indicatorsInit === 'function') {
+    indicatorsInit(Highcharts)
+}
+
 const app = createApp(App)
 app.component('font-awesome-icon', FontAwesomeIcon)
 app.use(createBootstrap())
@@ -51,4 +69,5 @@ app.use(createBootstrap())
     .use(router)
     .use(i18n)
     .use(VueAxios, axios)
+    .use(HighchartsVue)
     .mount('#app')
