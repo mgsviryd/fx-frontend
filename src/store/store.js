@@ -2,6 +2,7 @@ import {createStore} from 'vuex'
 import VuexPersistence from 'vuex-persist'
 import localforage from 'localforage'
 import {setLangAndLoadMessagesIfAbsent} from '../i18n/i18n.js'
+import helloWorld from '../rest/hello-world.js'
 
 const persist = new VuexPersistence(
     {
@@ -12,6 +13,7 @@ const persist = new VuexPersistence(
             {
                 lang: state.lang,
                 count: state.count,
+                someObjFromServer: state.someObjFromServer,
             }
         )
     }
@@ -25,11 +27,14 @@ const store = createStore({
         return {
             lang: "en",
             count: 0,
+
             user: null,
             todos: [
                 {id: 1, text: '...', done: true},
                 {id: 2, text: '...', done: false}
             ],
+
+            someObjFromServer: {},
         }
     },
     getters: {
@@ -46,7 +51,10 @@ const store = createStore({
         },
         setLang(state, {lang}) {
             state.lang = lang
-        }
+        },
+        saveSomeObjFromServer(state, {data}){
+            state.someObjFromServer = data
+        },
     },
     actions: {
         async loadI18nLang({commit, state}) {
@@ -55,6 +63,15 @@ const store = createStore({
         async setI18nLang({commit}, {lang}) {
             await setLangAndLoadMessagesIfAbsent(lang)
             commit('setLang', {lang: lang})
+        },
+        async loadSomeObjFromServer({commit}, p) {
+            const result = await helloWorld.getHelloWorld()
+            console.info(result)
+            if (result.status === 200) {
+                commit('saveSomeObjFromServer', {
+                    data: result.data,
+                })
+            }
         },
     },
 })

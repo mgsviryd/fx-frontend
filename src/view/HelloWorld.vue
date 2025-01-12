@@ -23,6 +23,7 @@
       </div>
 
       <BRow>{{ getCapitalizeLang('helloWorld') }}</BRow>
+      <BRow>{{someObjFromServer}}</BRow>
 
       <div class="card">
         <BButton variant="outline-primary" @click="incrementCount">count is {{ count }}</BButton>
@@ -70,6 +71,7 @@ export default {
     ...mapState([
       "lang",
       "count",
+      "someObjFromServer",
     ]),
     ...mapGetters([]),
     prefix() {
@@ -99,7 +101,7 @@ export default {
   },
   methods: {
     fetchData() {
-
+      this.$store.dispatch('loadSomeObjFromServer')
     },
     incrementCount() {
       this.$store.commit('increment')

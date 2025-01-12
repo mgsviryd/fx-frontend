@@ -9,6 +9,8 @@ import 'bootstrap-vue-next/dist/bootstrap-vue-next.css'
 import store from './store/store.js'
 import router from './router/router.js'
 import {i18n} from './i18n/i18n.js'
+import axios from 'axios'
+import VueAxios from 'vue-axios'
 
 window.jQuery = window.$ = $
 
@@ -33,9 +35,12 @@ router.beforeEach(async (to, from, next) => {
     }
 })
 
+axios.defaults.baseURL = location.protocol + '//' + location.hostname + ':' + 8080 + '/rest'
+
 const app = createApp(App)
 app.use(createBootstrap())
     .use(store)
     .use(router)
     .use(i18n)
+    .use(VueAxios, axios)
     .mount('#app')
