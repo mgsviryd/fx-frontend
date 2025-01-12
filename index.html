@@ -4,7 +4,21 @@
     <meta charset="UTF-8"/>
     <link href="/vite.svg" rel="icon" type="image/svg+xml"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    <title>Vite + Vue</title>
+    <!--    Start Single Page Apps for GitHub Pages (gh-pages)-->
+    <!--    https://github.com/rafgraph/spa-github-pages-->
+    <script type="text/javascript">
+        (function (l) {
+            if (l.search[1] === '/') {
+                let decoded = l.search.slice(1).split('&').map(function (s) {
+                    return s.replace(/~and~/g, '&')
+                }).join('?');
+                window.history.replaceState(null, null,
+                    l.pathname.slice(0, -1) + decoded + l.hash
+                );
+            }
+        }(window.location))
+    </script>
+    <!--    End Single Page Apps for GitHub Pages (gh-pages)-->
 </head>
 <body class="d-flex flex-column min-vh-100">
 <div id="app" class="m-0 p-0 min-vh-100 min-vw-100"></div>
