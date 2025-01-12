@@ -3,4 +3,5 @@ export default {
 
     defaultTitle: 'forex',
     mainTitle: 'hello world title',
+    nbrbTitle: 'nbrb chart',
 }

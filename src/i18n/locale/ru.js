@@ -3,4 +3,5 @@ export default {
 
     defaultTitle: 'форекс',
     mainTitle: 'привет мир заголовок',
+    nbrbTitle: 'нбрб график',
 }
