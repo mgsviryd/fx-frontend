@@ -22,7 +22,7 @@
         </a>
       </div>
 
-      <BRow>{{ getLang('helloWorld') }}</BRow>
+      <BRow>{{ getCapitalizeLang('helloWorld') }}</BRow>
 
       <div class="card">
         <BButton variant="outline-primary" @click="incrementCount">count is {{ count }}</BButton>
@@ -54,6 +54,7 @@
 <script>
 import {mapGetters, mapState} from 'vuex'
 import {SUPPORT_LOCALES} from '../i18n/i18n.js'
+import _capitalize from 'lodash/capitalize'
 
 export default {
   props: {},
@@ -104,10 +105,13 @@ export default {
       this.$store.commit('increment')
     },
     setTitle(to) {
-      document.title = this.getLang(to.meta.title) || this.getLang('defaultTitle')
+      document.title = this.getCapitalizeLang(to.meta.title) || this.getCapitalizeLang('defaultTitle')
     },
     getLang(key) {
       return this.$t(key)
+    },
+    getCapitalizeLang(key){
+      return _capitalize(this.getLang(key))
     },
     selectLang(lang) {
       this.$store.dispatch('setI18nLang', {lang: lang})

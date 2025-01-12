@@ -10,7 +10,6 @@ export default {
   props: [],
   components: {},
   async created() {
-    console.info('created')
     this.show.router = false // not load vue view before below
     await this.$store.restored // restore all data before load vue view
     await this.$store.dispatch('loadI18nLang')
@@ -18,7 +17,6 @@ export default {
     this.show.router = true
   },
   mounted() {
-    console.info('mounted')
     this.$nextTick(function () {
       // Код, который будет запущен только после
       // отрисовки всех представлений
