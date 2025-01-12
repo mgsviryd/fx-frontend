@@ -14,7 +14,6 @@ const persist = new VuexPersistence(
             {
                 lang: state.lang,
                 count: state.count,
-                someObjFromServer: state.someObjFromServer,
             }
         )
     }
