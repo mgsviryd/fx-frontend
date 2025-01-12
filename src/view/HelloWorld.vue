@@ -13,6 +13,10 @@
         </BDropdownItem>
       </BDropdown>
 
+      <font-awesome-icon :icon="['fas', 'pen-to-square']" class="text-warning"/>
+      <font-awesome-icon :icon="['far', 'angry']" class="text-danger"/>
+      <font-awesome-icon :icon="['fab', 'vk']" class="text-primary"/>
+
       <div>
         <a href="https://vite.dev" target="_blank">
           <img alt="Vite logo" class="logo" src="/vite.svg"/>
