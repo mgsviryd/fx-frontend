@@ -58,8 +58,11 @@ import {SUPPORT_LOCALES} from '../i18n/i18n.js'
 export default {
   props: {},
   components: {},
-  async mounted() {
+  async created(){
     await this.fetchData()
+  },
+  mounted() {
+
   },
 
   computed: {
