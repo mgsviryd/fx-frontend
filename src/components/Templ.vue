@@ -30,7 +30,7 @@ export default {
   },
   data() {
     return {
-      name: "Templ",
+      name: 'Templ',
     }
   },
   methods: {

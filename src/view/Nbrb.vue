@@ -66,7 +66,7 @@ import {Chart} from 'chart.js'
 export default {
   props: {},
   components: {},
-  async created(){
+  async created() {
     await this.fetchData()
   },
   mounted() {

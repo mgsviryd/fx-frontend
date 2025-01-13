@@ -27,7 +27,7 @@
       </div>
 
       <BRow>{{ getCapitalizeLang('helloWorld') }}</BRow>
-      <BRow>{{someObjFromServer}}</BRow>
+      <BRow>{{ someObjFromServer }}</BRow>
 
       <div class="card">
         <BButton variant="outline-primary" @click="incrementCount">count is {{ count }}</BButton>
@@ -64,7 +64,7 @@ import _capitalize from 'lodash/capitalize'
 export default {
   props: {},
   components: {},
-  async created(){
+  async created() {
     await this.fetchData()
   },
   mounted() {
@@ -73,9 +73,9 @@ export default {
 
   computed: {
     ...mapState([
-      "lang",
-      "count",
-      "someObjFromServer",
+      'lang',
+      'count',
+      'someObjFromServer',
     ]),
     ...mapGetters([]),
     prefix() {
@@ -116,7 +116,7 @@ export default {
     getLang(key) {
       return this.$t(key)
     },
-    getCapitalizeLang(key){
+    getCapitalizeLang(key) {
       return _capitalize(this.getLang(key))
     },
     selectLang(lang) {

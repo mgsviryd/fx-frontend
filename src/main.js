@@ -21,7 +21,7 @@ import {faVk} from '@fortawesome/free-brands-svg-icons'
 import HighchartsVue from 'highcharts-vue'
 import Highcharts from "highcharts"
 import stockInit from "highcharts/modules/stock"
-import accessibilityInit from "highcharts/modules/accessibility"
+import accessibilityInit from 'highcharts/modules/accessibility'
 import indicatorsInit from 'highcharts/indicators/indicators'
 
 
@@ -30,7 +30,7 @@ window.jQuery = window.$ = $
 // clear console after reload
 if (import.meta.hot) {
     import.meta.hot.on(
-        "vite:beforeUpdate",
+        'vite:beforeUpdate',
         () => console.clear() // comment to disable
     )
 }
