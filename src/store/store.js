@@ -2,7 +2,7 @@ import {createStore} from 'vuex'
 import VuexPersistence from 'vuex-persist'
 import localforage from 'localforage'
 import {setLangAndLoadMessagesIfAbsent} from '../i18n/i18n.js'
-import helloWorld from '../rest/hello-world.js'
+import helloWorld from '../http/rest/hello-world.js'
 import createMutationsSharer from 'vuex-shared-mutations'
 
 const persist = new VuexPersistence(
@@ -58,7 +58,7 @@ const store = createStore({
         setLang(state, {lang}) {
             state.lang = lang
         },
-        saveSomeObjFromServer(state, {data}){
+        saveSomeObjFromServer(state, {data}) {
             state.someObjFromServer = data
         },
     },
@@ -71,7 +71,7 @@ const store = createStore({
             commit('setLang', {lang: lang})
         },
         async loadSomeObjFromServer({commit}, p) {
-            const result = await helloWorld.getHelloWorld()
+            const result = await helloWorld.get()
             console.info(result)
             if (result.status === 200) {
                 commit('saveSomeObjFromServer', {

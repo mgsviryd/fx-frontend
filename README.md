@@ -64,7 +64,7 @@ docker run -p 8081:8081 your-image-namе
 | vuex           | save data between reload page and share it between components                                                                 | https://vuex.vuejs.org/                  |
 | vue-i18n       | update page messages without reload page by setting lang                                                                      | https://vue-i18n.intlify.dev/                    |
 | jquery         | lightweight library for: HTML/DOM manipulation, CSS manipulation, HTML event methods, Effects and animations, AJAX, Utilities | https://jquery.com/                 |
-| axios          | http request to servers                                                                                                       | https://axios-http.com/                    |
+| axios          | rest request to servers                                                                                                       | https://axios-rest.com/                    |
 | bootstrap-vue-next | write html components in a simple and readable way applying Bootstrap                                                         | https://bootstrap-vue-next.github.io/bootstrap-vue-next/                |
 | fortawesome    | add icons on your site                                                                                                        | https://fontawesome.com/                    |
 | chart.js       | chart visualization  (e.g. line chart)                                                                                        | https://www.chartjs.org/                    |
