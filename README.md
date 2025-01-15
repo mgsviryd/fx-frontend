@@ -7,11 +7,11 @@ Here is SPA application - single index.html loads once and uses vue-router to na
 Vite gives quick hot-reload page which important for development.
 
 ## Environment
-| Name    | Description                                                    | Source |
-|---------|----------------------------------------------------------------|--------|
-| nvm     | manager to install and control versions of `Node.js` and `npm` | https://github.com/nvm-sh/nvm  |
-| Node.js | JavaScript runtime                                             | https://nodejs.org/en|
-| npm     | package manager for JavaScript                                 | https://www.npmjs.com/|
+| Name    | Description                                                    |
+|---------|----------------------------------------------------------------|
+| [nvm](https://github.com/nvm-sh/nvm/)     | manager to install and control versions of `Node.js` and `npm` |
+| [Node.js](https://nodejs.org/en/)  | JavaScript runtime                                             |
+| [npm](https://www.npmjs.com/)      | package manager for JavaScript                                 |
 
 ## Setup
 
@@ -52,19 +52,19 @@ docker run -p 8081:8081 your-image-namе
 ```
 
 ## Packages
-| Name           | Short description                                                                                                             | Source                  |
-|----------------|-------------------------------------------------------------------------------------------------------------------------------|-------------------------|
-| vite           | quick build Node.js modules (min 10 times compared Webpack), hot-reload for development                                       | https://vite.dev/guide/ |
-| vue            | split html on .vue components consisting with template, script, style sections                                                | https://vuejs.org/                  |
-| vue-router     | map url to .vue components (we put it in `view` folder)                                                                       | https://router.vuejs.org/                 |
-| vuex           | save data between reload page and share it between components                                                                 | https://vuex.vuejs.org/                  |
-| vue-i18n       | update page messages without reload page by setting lang                                                                      | https://vue-i18n.intlify.dev/                    |
-| jquery         | lightweight library for: HTML/DOM manipulation, CSS manipulation, HTML event methods, Effects and animations, AJAX, Utilities | https://jquery.com/                 |
-| axios          | rest request to servers                                                                                                       | https://axios-rest.com/                    |
-| bootstrap-vue-next | write html components in a simple and readable way applying Bootstrap                                                         | https://bootstrap-vue-next.github.io/bootstrap-vue-next/                |
-| fortawesome    | add icons on your site                                                                                                        | https://fontawesome.com/                    |
-| chart.js       | chart visualization  (e.g. line chart)                                                                                        | https://www.chartjs.org/                    |
-| highcharts     | graphic visualization (e.g. stock chart)                                                                                      | https://www.highcharts.com/                    |
+| Name           | Short description                                                                                                             |
+|----------------|-------------------------------------------------------------------------------------------------------------------------------|
+| [vite](https://vite.dev/guide/)           | quick build Node.js modules (min 10 times compared Webpack), hot-reload for development                                       |
+| [vue](https://vuejs.org/)              | split html on .vue components consisting with template, script, style sections                                                |
+| [vue-router](https://router.vuejs.org/)     | map url to .vue components (we put it in `view` folder)                                                                       |
+| [vuex](https://vuex.vuejs.org/)           | save data between reload page and share it between components                                                                 |
+| [vue-i18n](https://vue-i18n.intlify.dev/)       | update page messages without reload page by setting lang                                                                      |
+| [jquery](https://jquery.com/ )         | lightweight library for: HTML/DOM manipulation, CSS manipulation, HTML event methods, Effects and animations, AJAX, Utilities |
+| [axios](https://axios-rest.com/)          | rest request to servers                                                                                                       |
+| [bootstrap-vue-next](https://bootstrap-vue-next.github.io/bootstrap-vue-next/) | write html components in a simple and readable way applying Bootstrap                                                         |
+| [fortawesome](https://fontawesome.com/)    | add icons on your site                                                                                                        |
+| [chart.js](https://www.chartjs.org/)       | chart visualization  (e.g. line chart)                                                                                        |
+| [highcharts](https://www.highcharts.com/)     | graphic visualization (e.g. stock chart)                                                                                      |
 
 > [!NOTE]  
 > It is a version for study. You can save memory space by deleting next folders from Git history:
