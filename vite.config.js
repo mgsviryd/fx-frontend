@@ -27,6 +27,5 @@ export default defineConfig({
     build: {
         chunkSizeWarningLimit: 1600,
     },
-    base: '/',
-    // base: '/fx-frontend',
+    base: process.env.VITE_BASE || '/',
 })
