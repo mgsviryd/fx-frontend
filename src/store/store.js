@@ -5,12 +5,14 @@ import {setLangAndLoadMessagesIfAbsent} from '../i18n/i18n.js'
 import helloWorld from '../http/rest/hello-world.js'
 import createMutationsSharer from 'vuex-shared-mutations'
 
+// For always saving state even between reload page or reopen browser
 const persist = new VuexPersistence(
     {
         key: 'root',
         storage: localforage,
         asyncStorage: true,
         reducer: (state) => (
+            // state we want to save
             {
                 lang: state.lang,
                 count: state.count,
@@ -21,7 +23,8 @@ const persist = new VuexPersistence(
 
 const store = createStore({
     plugins: [
-        persist.plugin, // can be timing problem with loading page
+        persist.plugin,
+        // For sync state between pages through sync mutations
         createMutationsSharer({
             predicate: (mutation, state) => {
                 const predicate = ["increment",] // mutations for sync
@@ -31,9 +34,11 @@ const store = createStore({
     ],
     state() {
         return {
+            <!-- Start 'even reload' state -->
             lang: "en",
             count: 0,
 
+            <!-- Start 'till reload' state -->
             user: null,
             todos: [
                 {id: 1, text: '...', done: true},

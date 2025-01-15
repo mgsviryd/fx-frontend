@@ -2,10 +2,13 @@
 
 This template should help get you started developing with Vue 3 in Vite.
 
-Learn more about IDE Support for Vue in the [Vue Docs Scaling up Guide](https://vuejs.org/guide/scaling-up/tooling.html#ide-support).
+Here is SPA application - single index.html loads once and uses vue-router to navigate between pages.
+
+Vite gives quick hot-reload page which important for development.
+
 
 > [!NOTE]  
-> It is demo version for study. You can save memory while use this code in your project if delete next folders:
+> It is a version for study. You can save memory space while using this code in your project if delete next folders:
 > - screenshot
 > - task
 > - template
