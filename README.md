@@ -6,13 +6,6 @@ Here is SPA application - single index.html loads once and uses vue-router to na
 
 Vite gives quick hot-reload page which important for development.
 
-
-> [!NOTE]  
-> It is a version for study. You can save memory space while using this code in your project if delete next folders:
-> - screenshot
-> - task
-> - template
-
 ## Environment
 | Name    | Description                                                    | Source |
 |---------|----------------------------------------------------------------|--------|
@@ -73,3 +66,23 @@ docker run -p 8081:8081 your-image-namе
 | chart.js       | chart visualization  (e.g. line chart)                                                                                        | https://www.chartjs.org/                    |
 | highcharts     | graphic visualization (e.g. stock chart)                                                                                      | https://www.highcharts.com/                    |
 
+> [!NOTE]  
+> It is a version for study. You can save memory space by deleting next folders from Git history:
+> - screenshot
+> - task
+> - template
+> 
+> How to check git memory space:
+>> $ git count-objects -vH
+>
+> How to delete:
+> - Remove DIRECTORY from all commits, then remove the refs to the old commits
+    (repeat these two commands for as many directories that you want to remove):
+>> $ git filter-branch --index-filter 'git rm -rf --cached --ignore-unmatch DIRECTORY/' --prune-empty --tag-name-filter cat -- --all
+>
+>> $ git for-each-ref --format="%(refname)" refs/original/ | xargs -n 1 git update-ref -d
+> - Ensure all old refs are fully removed
+>> $ rm -Rf .git/logs .git/refs/original
+>
+> - Perform a garbage collection to remove commits with no refs
+>> $ git gc --prune=all --aggressive
