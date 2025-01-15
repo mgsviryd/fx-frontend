@@ -5,7 +5,7 @@ import {setLangAndLoadMessagesIfAbsent} from '../i18n/i18n.js'
 import helloWorld from '../http/rest/hello-world.js'
 import createMutationsSharer from 'vuex-shared-mutations'
 
-// For always saving state even between reload page or reopen browser
+// For always saving state even between reload page or reopen browser ('even reload' state)
 const persist = new VuexPersistence(
     {
         key: 'root',
@@ -34,17 +34,16 @@ const store = createStore({
     ],
     state() {
         return {
-            <!-- Start 'even reload' state -->
+            // 'even reload' state
             lang: "en",
             count: 0,
 
-            <!-- Start 'till reload' state -->
+            // 'till reload' state
             user: null,
             todos: [
                 {id: 1, text: '...', done: true},
                 {id: 2, text: '...', done: false}
             ],
-
             someObjFromServer: {},
         }
     },
