@@ -33,7 +33,17 @@ Type sub-urls to navigate:
 
 ---
 
-## Setup
+## Pre-setup
+### Check your ports
+By default, here we use port 8081. You can choose another one.
+```sh
+nc -zv localhost 8081
+```
+**Status:** 🚫 Refused
+
+---
+
+## Setup (via command-line)
 
 ### Setup packages
 
@@ -59,18 +69,19 @@ npm run build
 npm run deploy
 ```
 
+## Setup (via Docker)
+
 ### Build docker image
 
 ```sh
 docker build -t your-image-name -f Dockerfile .
 ```
 
-### Build docker container and run on port your port (here: 8081)
+### Run docker container exposing on port
 
 ```sh
 docker run -p 8081:8081 your-image-namе
 ```
-
 ---
 
 ## Packages
