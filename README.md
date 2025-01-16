@@ -1,4 +1,4 @@
-# Vue 3 + Vite
+# Vue 3 + Vite 🚀
 
 This template should help get you started developing with Vue 3 in Vite.
 
@@ -13,30 +13,71 @@ Vite gives quick hot-reload page which important for development.
 
 You can view the live demo of this project here:
 
-[Live Demo](https://mgsviryd.github.io/fx-frontend)
+[🚀 Live Demo](https://mgsviryd.github.io/fx-frontend)
 
 Project deployed using [Github Pages](https://pages.github.com/). How to do that search commit with key `gh-pages`.
 
 Type sub-urls to navigate:
- - / - route to main page (check count, sync count on different pages, without reload checkout language)
- - /chart - route to stock chart based on Highchart JS
- - /nbrb - route to BYN exchange chart
+ - ```/``` - route to main page (check count, sync count on different pages, without reload checkout language)
+ - ```/chart``` - route to stock chart based on Highchart JS
+ - ```/nbrb``` - route to BYN exchange chart
 
 ---
 
 ## Environment
-| Name                                  | Description                                                                                                                                             |
-|---------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [nvm](https://github.com/nvm-sh/nvm/) | Manager to install and control versions of `Node.js` and `npm`<br/>  ``` $ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh ``` |
-| [Node.js](https://nodejs.org/en/)     | JavaScript runtime<br/> ```$ nvm install 18```<br/> ```$ nvm ls```<br/>```$ nvm use 18```<br/>```$ node -v```                                           |
-| [npm](https://www.npmjs.com/)         | Package manager for JavaScript<br/>```$ npm -v```                                                                                                       |
+
+> ### [**nvm**](https://github.com/nvm-sh/nvm/)  
+> Manager to install and control versions of `Node.js` and `npm`
+```shell
+ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh 
+ ``` 
+
+> ### [**Node.js**](https://nodejs.org/en/)  
+> JavaScript runtime
+```shell
+nvm install 18
+```
+```shell
+nvm ls
+```
+```shell
+nvm use 18
+```
+```shell
+node -v
+```
+> ### [**npm**](https://www.npmjs.com/)  
+> Package manager for JavaScript
+```shell
+npm -v
+```     
+> ### [**Docker**](https://www.docker.com/)
+> Platform designed to help developers build, share, and run container applications
+#### Mac OS
+| Name                                                | Description                                                                                                                                                                    |
+|-----------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [brew](https://brew.sh/)                            | Manager to install and control versions of packages, e.g. `jdk` and `maven`<br/> ```/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"``` |
+| [docker](https://www.docker.com/)                   | Platform designed to help developers build, share, and run container applications<br/>```brew install docker```                                                              |
+
+#### PC
+| Name                                                 | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+|------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [chocolatey](https://chocolatey.org/)                | Manager to install and control versions of packages, e.g. `jdk` and `maven`<br/>```/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"<br/>Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))``` |
+| [docker](https://www.docker.com/)                    | Platform designed to help developers build, share, and run container applications<br/>```choco install docker-desktop```                                                                                                                                                                                                                                                                                                                                           |
 
 ---
 
 ## Pre-setup
+
+### Clone git repository
+```shell
+git clone https://github.com/mgsviryd/fx-frontend.git    
+```
+
 ### Check your ports
-By default, here we use port 8081. You can choose another one.
-```sh
+By default, we use next ports:
+- 8081 - for frontend (must be close), you can choose another one
+```shell
 nc -zv localhost 8081
 ```
 **Status:** 🚫 Refused
@@ -44,44 +85,60 @@ nc -zv localhost 8081
 ---
 
 ## Setup (via command-line)
+⚠️ first complete [Pre-setup](#pre-setup)
 
 ### Setup packages
-
-```sh
+```shell
 npm install
 ```
 
 ### Compile and Hot-Reload for Development
-
-```sh
+```shell
 npm run dev
 ```
 
 ### Compile and Minify for Production
-
-```sh
+```shell
 npm run build
 ```
 
 ### Compile and Minify and push dist folder to gh-pages
-
-```sh
+```shell
 npm run deploy
 ```
 
 ## Setup (via Docker)
+⚠️ do [Pre-setup](##pre-setup) first
+
+### Start docker daemon
+On a typical installation the Docker daemon is started by a system utility. For more information see [here](https://docs.docker.com/engine/daemon/start/).
 
 ### Build docker image
-
-```sh
+```shell
 docker build -t your-image-name -f Dockerfile .
 ```
 
-### Run docker container exposing on port
-
-```sh
-docker run -p 8081:8081 your-image-namе
+### Run docker container (to expose port 8081)
+```shell
+docker run --name your-container-name -p 8081:8081 your-image-name
 ```
+
+### Done
+[http://localhost:8081](http://localhost:8081)
+### Stop docker container
+```shell
+docker stop your-container-namе
+```
+
+### Remove docker container
+```shell
+docker rm your-container-namе
+```
+### Remove docker image
+```shell
+docker rmi your-image-namе
+```
+
 ---
 
 ## Packages
@@ -101,23 +158,30 @@ docker run -p 8081:8081 your-image-namе
 
 ---
 
-> [!NOTE]  
+## Git
+> ⚠️
 > It is a version for study. You can save memory space by deleting next folders from Git history:
 > - screenshot
 > - task
 > - template
-> 
-> How to check git memory space:
->> $ git count-objects -vH
->
-> How to delete:
-> - Remove DIRECTORY from all commits, then remove the refs to the old commits
-    (repeat these two commands for as many directories that you want to remove):
->> $ git filter-branch --index-filter 'git rm -rf --cached --ignore-unmatch DIRECTORY/' --prune-empty --tag-name-filter cat -- --all
->
->> $ git for-each-ref --format="%(refname)" refs/original/ | xargs -n 1 git update-ref -d
-> - Ensure all old refs are fully removed
->> $ rm -Rf .git/logs .git/refs/original
->
-> - Perform a garbage collection to remove commits with no refs
->> $ git gc --prune=all --aggressive
+
+### Check git memory space
+```shell
+git count-objects -vH
+```
+
+### How to remove (`screenshot` folder)
+> Remove from all commits, then remove the refs to the old commits
+(repeat these two commands for as many directories that you want to remove):
+```shell
+git filter-branch --index-filter 'git rm -rf --cached --ignore-unmatch screenshot/' --prune-empty --tag-name-filter cat -- --all
+git for-each-ref --format="%(refname)" refs/original/ | xargs -n 1 git update-ref -d
+```
+> Ensure all old refs are fully removed:
+```shell
+rm -Rf .git/logs .git/refs/original
+```
+> Perform a garbage collection to remove commits with no refs:
+```shell
+git gc --prune=all --aggressive
+```
