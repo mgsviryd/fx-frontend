@@ -6,12 +6,32 @@ Here is SPA application - single index.html loads once and uses vue-router to na
 
 Vite gives quick hot-reload page which important for development.
 
+---
+
+## Live Demo
+ 
+
+You can view the live demo of this project here:
+
+[Live Demo](https://mgsviryd.github.io/fx-frontend)
+
+Project deployed using [Github Pages](https://pages.github.com/). How to do that search commit with key `gh-pages`.
+
+Type sub-urls to navigate:
+ - / - route to main page (check count, sync count on different pages, without reload checkout language)
+ - /chart - route to stock chart based on Highchart JS
+ - /nbrb - route to BYN exchange chart
+
+---
+
 ## Environment
-| Name    | Description                                                    |
-|---------|----------------------------------------------------------------|
-| [nvm](https://github.com/nvm-sh/nvm/)     | manager to install and control versions of `Node.js` and `npm` |
-| [Node.js](https://nodejs.org/en/)  | JavaScript runtime                                             |
-| [npm](https://www.npmjs.com/)      | package manager for JavaScript                                 |
+| Name                                  | Description                                                                                                                                             |
+|---------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [nvm](https://github.com/nvm-sh/nvm/) | Manager to install and control versions of `Node.js` and `npm`<br/>  ``` $ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh ``` |
+| [Node.js](https://nodejs.org/en/)     | JavaScript runtime<br/> ```$ nvm install 18```<br/> ```$ nvm ls```<br/>```$ nvm use 18```<br/>```$ node -v```                                           |
+| [npm](https://www.npmjs.com/)         | Package manager for JavaScript<br/>```$ npm -v```                                                                                                       |
+
+---
 
 ## Setup
 
@@ -51,6 +71,8 @@ docker build -t your-image-name -f Dockerfile .
 docker run -p 8081:8081 your-image-namе
 ```
 
+---
+
 ## Packages
 | Name           | Short description                                                                                                             |
 |----------------|-------------------------------------------------------------------------------------------------------------------------------|
@@ -65,6 +87,8 @@ docker run -p 8081:8081 your-image-namе
 | [fortawesome](https://fontawesome.com/)    | add icons on your site                                                                                                        |
 | [chart.js](https://www.chartjs.org/)       | chart visualization  (e.g. line chart)                                                                                        |
 | [highcharts](https://www.highcharts.com/)     | graphic visualization (e.g. stock chart)                                                                                      |
+
+---
 
 > [!NOTE]  
 > It is a version for study. You can save memory space by deleting next folders from Git history:
