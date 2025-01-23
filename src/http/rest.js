@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const rest = axios.create({
-    baseURL: location.protocol + '//' + location.hostname + ':' + 8080 + '/rest',
+    baseURL: import.meta.env.VITE_HOST_REST_URL + '/rest',
     timeout: 5000,
 })
 

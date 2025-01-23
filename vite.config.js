@@ -2,9 +2,22 @@ import {defineConfig} from 'vite'
 import vue from '@vitejs/plugin-vue'
 import Components from 'unplugin-vue-components/vite'
 import {BootstrapVueNextResolver} from 'bootstrap-vue-next'
+import dotenv from 'dotenv'
+import path from 'path'
+
+dotenv.config()
+const customEnvFile = process.env.CUSTOM_ENV_FILE || '.env'
+const customEnvPath = path.resolve(__dirname, customEnvFile)
+dotenv.config({path: customEnvPath})
+// console.log(`Using environment file: ${customEnvPath}`)
+// console.log('Loaded Environment Variables:', process.env)
 
 // https://vite.dev/config/
 export default defineConfig({
+    define: {
+        // Ensure Vite only uses variables prefixed with "VITE_"
+        'process.env': process.env,
+    },
     plugins: [
         vue(),
         Components({
