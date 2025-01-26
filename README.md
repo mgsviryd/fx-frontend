@@ -6,6 +6,13 @@ Here is SPA application - single index.html loads once and uses vue-router to na
 
 Vite gives quick hot-reload page which important for development.
 
+> ⚠️
+> It is a version for study. You can save memory space by deleting next folders from Git history:
+> - screenshot
+> - task
+> - template
+>
+> > How to do scroll [here](#how-to-remove-screenshot-folder).
 ---
 
 ## Live Demo
@@ -161,11 +168,6 @@ docker rmi your-image-namе
 ---
 
 ## Git
-> ⚠️
-> It is a version for study. You can save memory space by deleting next folders from Git history:
-> - screenshot
-> - task
-> - template
 
 ### Check git memory space
 ```shell
