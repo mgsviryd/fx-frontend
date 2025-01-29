@@ -33,8 +33,8 @@ export function isLoaded(locale){
 export async function loadMessagesIfAbsent(locale) {
     // load locale messages with dynamic import
     if (isLoaded(locale)) {
-        const messages = await import(`./locale/${locale}.js`)
-        i18n.global.setLocaleMessage(locale, JSON.parse(JSON.stringify(messages.default)))
+        const messages = await import(`./locale/${locale}.json5`)
+        i18n.global.setLocaleMessage(locale, messages)
         loaded[i++] = locale
     }
 }

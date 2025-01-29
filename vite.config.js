@@ -1,5 +1,6 @@
 import {defineConfig} from 'vite'
 import vue from '@vitejs/plugin-vue'
+import json5 from 'vite-plugin-json5'
 import Components from 'unplugin-vue-components/vite'
 import {BootstrapVueNextResolver} from 'bootstrap-vue-next'
 import dotenv from 'dotenv'
@@ -23,6 +24,7 @@ export default defineConfig({
         Components({
             resolvers: [BootstrapVueNextResolver()],
         }),
+        json5(),
     ],
 
     server: {
