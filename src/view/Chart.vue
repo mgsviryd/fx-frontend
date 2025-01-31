@@ -18,10 +18,10 @@
 import {mapGetters, mapState} from 'vuex'
 import {Chart} from 'highcharts-vue'
 import {data} from '../data/stock.js'
-import _capitalize from 'lodash/capitalize'
+import {getCapitalizeLang, getLang} from '../i18n/i18n.js'
 
 export default {
-  props: {},
+  props: [],
   components: {
     highcharts: Chart,
   },
@@ -164,7 +164,7 @@ export default {
             ],
             ["month", [1, 2, 3, 4, 6]],
           ],
-          i = 0;
+          i = 0
 
       for (i; i < dataLength; i += 1) {
         ohlc.push([
@@ -178,19 +178,19 @@ export default {
         volume.push([
           data[i][0], // the date
           data[i][5], // the volume
-        ]);
+        ])
       }
 
-      this.ohlc = ohlc;
-      this.volume = volume;
-      this.groupingUnits = groupingUnits;
+      this.ohlc = ohlc
+      this.volume = volume
+      this.groupingUnits = groupingUnits
     },
 
     getLang(key) {
-      return this.$t(key)
+      return getLang(key)
     },
     getCapitalizeLang(key) {
-      return _capitalize(this.getLang(key))
+      return getCapitalizeLang(key)
     },
 
   }

@@ -60,11 +60,11 @@
 
 <script>
 import {mapGetters, mapState} from 'vuex'
-import _capitalize from 'lodash/capitalize'
 import {Chart} from 'chart.js'
+import {getCapitalizeLang, getLang} from '../i18n/i18n.js'
 
 export default {
-  props: {},
+  props: [],
   components: {},
   async created() {
     await this.fetchData()
@@ -119,10 +119,10 @@ export default {
       document.title = this.getCapitalizeLang(to.meta.title) || this.getCapitalizeLang('defaultTitle')
     },
     getLang(key) {
-      return this.$t(key)
+      return getLang(key)
     },
     getCapitalizeLang(key) {
-      return _capitalize(this.getLang(key))
+      return getCapitalizeLang(key)
     },
 
     clickSubmit(e) {

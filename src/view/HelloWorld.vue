@@ -58,11 +58,10 @@
 
 <script>
 import {mapGetters, mapState} from 'vuex'
-import {SUPPORT_LOCALES} from '../i18n/i18n.js'
-import _capitalize from 'lodash/capitalize'
+import {getCapitalizeLang, getLang, SUPPORT_LOCALES} from '../i18n/i18n.js'
 
 export default {
-  props: {},
+  props: [],
   components: {},
   async created() {
     await this.fetchData()
@@ -114,10 +113,10 @@ export default {
       document.title = this.getCapitalizeLang(to.meta.title) || this.getCapitalizeLang('defaultTitle')
     },
     getLang(key) {
-      return this.$t(key)
+      return getLang(key)
     },
     getCapitalizeLang(key) {
-      return _capitalize(this.getLang(key))
+      return getCapitalizeLang(key)
     },
     selectLang(lang) {
       this.$store.dispatch('setI18nLang', {lang: lang})
