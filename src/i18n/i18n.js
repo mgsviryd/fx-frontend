@@ -1,5 +1,5 @@
 import {createI18n} from 'vue-i18n'
-import {lowerCase, upperCase, capitalize} from 'lodash-es'
+import {capitalize, lowerCase, upperCase} from 'lodash-es'
 
 export const SUPPORT_LOCALES = ['en', 'ru']
 export const i18n = createI18n({legacy: false,})
@@ -27,32 +27,33 @@ export function setLang(locale) {
      */
     document.querySelector('html').setAttribute('lang', locale)
 }
-export function isLoaded(locale){
+
+export function isLoaded(locale) {
     return loaded.findIndex(l => l === locale) < 0
 }
 
 export async function loadMessagesIfAbsent(locale) {
     // load locale messages with dynamic import
     if (isLoaded(locale)) {
-        const messages = await import(`./locale/${locale}.json5`)
+        const {default: messages} = await import(`./locale/${locale}.json5`)
         i18n.global.setLocaleMessage(locale, messages)
         loaded[i++] = locale
     }
 }
 
-function getCapitalizeLang(key){
+function getCapitalizeLang(key) {
     return capitalize(getLang(key))
 }
 
-function getLang(key){
+function getLang(key) {
     return i18n.global.t(key)
 }
 
-function getLowerCaseLang(key){
+function getLowerCaseLang(key) {
     return lowerCase(getLang(key))
 }
 
-function getUpperCaseLang(key){
+function getUpperCaseLang(key) {
     return upperCase(getLang(key))
 }
 
