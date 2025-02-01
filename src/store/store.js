@@ -1,16 +1,15 @@
 import {createStore} from 'vuex'
-import VuexPersistence from 'vuex-persist'
+import VuexPersistence from 'vuex-persistedstate'
 import localforage from 'localforage'
 import {setLangAndLoadMessagesIfAbsent} from '../i18n/i18n.js'
 import helloWorld from '../http/rest/hello-world.js'
 import createMutationsSharer from 'vuex-shared-mutations'
 
 // For always saving state even between reload page or reopen browser ('even reload' state)
-const persist = new VuexPersistence(
+const persist = VuexPersistence(
     {
         key: 'root',
         storage: localforage,
-        asyncStorage: true,
         reducer: (state) => (
             // state we want to save
             {
@@ -23,7 +22,7 @@ const persist = new VuexPersistence(
 
 const store = createStore({
     plugins: [
-        persist.plugin,
+        persist,
         // For sync state between pages through sync mutations
         createMutationsSharer({
             predicate: (mutation, state) => {
