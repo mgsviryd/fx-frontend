@@ -1,15 +1,28 @@
 import {createStore} from 'vuex'
-import VuexPersistence from 'vuex-persistedstate'
+import VuexPersistence from 'vuex-persist'
 import localforage from 'localforage'
 import {setLangAndLoadMessagesIfAbsent} from '../i18n/i18n.js'
 import helloWorld from '../http/rest/hello-world.js'
 import createMutationsSharer from 'vuex-shared-mutations'
+import {stringify, parse} from 'flatted'
 
 // For always saving state even between reload page or reopen browser ('even reload' state)
-const persist = VuexPersistence(
+const persist = new VuexPersistence(
     {
         key: 'root',
-        storage: localforage,
+        storage: {
+            async getItem(key) {
+                const data = await localforage.getItem(key)
+                return data ? parse(data) : null
+            },
+            async setItem(key, value) {
+                return await localforage.setItem(key, stringify(value))
+            },
+            async removeItem(key) {
+                return await localforage.removeItem(key)
+            },
+        },
+        asyncStorage: true,
         reducer: (state) => (
             // state we want to save
             {
@@ -22,7 +35,7 @@ const persist = VuexPersistence(
 
 const store = createStore({
     plugins: [
-        persist,
+        persist.plugin,
         // For sync state between pages through sync mutations
         createMutationsSharer({
             predicate: (mutation, state) => {
@@ -34,7 +47,7 @@ const store = createStore({
     state() {
         return {
             // 'even reload' state
-            lang: "en",
+            lang: "en_US",
             count: 0,
 
             // 'till reload' state
