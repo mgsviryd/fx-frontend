@@ -6,6 +6,36 @@ import helloWorld from '../http/rest/hello-world.js'
 import createMutationsSharer from 'vuex-shared-mutations'
 import {stringify, parse} from 'flatted'
 
+// 🔹 Convert Map/Set before saving
+const transformBeforeSave = (value) => {
+    if (value instanceof Map) {
+        return { __type: 'Map', data: Array.from(value) } // Convert Map to array
+    }
+    if (value instanceof Set) {
+        return { __type: 'Set', data: Array.from(value) } // Convert Set to array
+    }
+    if (typeof value === 'object' && value !== null) {
+        return Object.fromEntries(
+            Object.entries(value).map(([key, val]) => [key, transformBeforeSave(val)])
+        )
+    }
+    return value
+}
+// 🔹 Restore Map/Set after retrieving
+const transformAfterRetrieve = (value) => {
+    if (value && typeof value === 'object') {
+        if (value.__type === 'Map') {
+            return new Map(value.data) // Convert back to Map
+        }
+        if (value.__type === 'Set') {
+            return new Set(value.data) // Convert back to Set
+        }
+        return Object.fromEntries(
+            Object.entries(value).map(([key, val]) => [key, transformAfterRetrieve(val)])
+        )
+    }
+    return value
+}
 // For always saving state even between reload page or reopen browser ('even reload' state)
 const persist = new VuexPersistence(
     {
@@ -13,10 +43,10 @@ const persist = new VuexPersistence(
         storage: {
             async getItem(key) {
                 const data = await localforage.getItem(key)
-                return data ? parse(data) : null
+                return data ? transformAfterRetrieve(parse(data)) : null
             },
             async setItem(key, value) {
-                return await localforage.setItem(key, stringify(value))
+                return await localforage.setItem(key, stringify(transformBeforeSave(value)))
             },
             async removeItem(key) {
                 return await localforage.removeItem(key)
@@ -26,8 +56,20 @@ const persist = new VuexPersistence(
         reducer: (state) => (
             // state we want to save
             {
+                settings: state.settings,
+                ids: state.ids_,
+                height: state.height,
+                authentication: state.authentication,
+                config: state.config,
+                version: state.version,
                 lang: state.lang,
-                count: state.count,
+                langMap: state.langMap,
+                vocabulary: state.vocabulary,
+                vocabularies: state.vocabularies,
+                cards: state.cards,
+                dictionaries: state.dictionaries,
+                tutor_: state.tutor_,
+                size: state.size,
             }
         )
     }
